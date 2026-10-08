@@ -1,0 +1,21 @@
+code to convert avi videos into imaegs
+
+Get-ChildItem -Filter "*.avi" | ForEach-Object {
+    $name = $_.BaseName
+    $folder = Join-Path $_.DirectoryName $name
+
+    if (-not (Test-Path $folder)) {
+        New-Item -ItemType Directory -Path $folder | Out-Null
+    }
+
+    Write-Host "Processing: $($_.Name)" -ForegroundColor Cyan
+
+    ffmpeg -i $_.FullName -vf "fps=2" (Join-Path $folder "frame_%06d.jpg")
+}
+
+
+Seeed Studio XIAO ESP32S3 Sense - 2.4GHz Wi-Fi, BLE 5.0, OV2640 camera sensor, digital microphone, battery charge supported, rich Interface, IoT, embedded ML
+
+Impluse Edge to train ai
+
+arduino-ide_2.3.10_Windows_64bit
